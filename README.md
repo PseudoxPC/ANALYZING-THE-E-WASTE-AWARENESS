@@ -93,7 +93,7 @@ Priyanshu Chouhan		22ad10pr1@mitsgwl.ac.in
 
 Krish Gupta		22ad10kr661@mitsgwl.ac.in
 
-Prateek Batham		prateekbatham.04@gmail.com
+Prateek Batham		22ad10pr632@mitsgwl.ac.in
 
 Pratham Hande	r	22ad10pr656@mitsgwl.ac.in
 
