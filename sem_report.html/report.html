@@ -1,0 +1,2170 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Georgy Meshcheryakov">
+    <title>sem_report.html: Report</title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/semopy.css" rel="stylesheet">
+    <script src="./js/bootstrap.min.js"></script>
+    <style>nav .nav-link {
+    color: black;
+}
+nav .nav-link:hover {
+    color: grey;
+}
+nav .nav-link.active {
+    color: grey;
+}</style>
+
+
+  </head>
+  <body>
+<br><br>
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-8">
+	<h2 style="display:inline">Report: sem_report.html</h2>
+	</div>
+</div>
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-sm-2">
+     <br>
+     <div class="sticky-top">
+      <nav class="nav flex-column" >
+        <a class="p-1 nav-link active" id="model_m" href="#model">Model information</a>
+        <a class="p-1 nav-link" id="estimates_m" href="#estimates">Estimates</a>
+        <a class="p-1 nav-link" id="indices_m" href="#indices">Fit indices</a>
+	<a class="p-1 nav-link" id="matrices_m" href="#matrices">Matrices</a>
+      </nav>
+     </div>
+    </div>
+    <div class="col-sm-9" style="border-left: 1px solid">
+     <br>
+	<a class="anchor" id="model"></a>
+	<h3>Model information</h3>
+		<div class="row">
+		<div class="col-sm-4">Model class:</div><div class="col-sm-2"><span style="background-color: #f6f8fa; font-family: monospace;">Model</span></div>
+		</div>
+		<div class="row">
+		<div class="col-sm-4">Number of samples:</div><div class="col-sm-2">169</div>
+		</div>
+		<div class="row">
+		<div class="col-sm-4">Objective function:</div><div class="col-sm-2">MLW</div>
+		</div>
+		<div class="row">
+		<div class="col-sm-4">Converged:</div><div class="col-sm-2 text-success">Yes</div>
+		</div>
+		<br>
+		Description in <b>semopy</b> syntax:
+		<div class="col-sm-9" style="background-color: #f6f8fa;max-width: 100%;width: 100%;border: 1px solid">
+		<pre style="font-family: monospace">
+    # Measurement Model
+    Attitude =~ ATT1 + ATT2 + ATT3
+    PBC =~ PBC1 + PBC2 + PBC3
+    SubjectiveNorm =~ SN1 + SN2 + SN3
+    Intention =~ INT1 + INT2
+    Behavior =~ BEH1 + BEH2
+
+    # Structural Model (TPB)
+    Intention ~ Attitude + PBC + SubjectiveNorm
+    Behavior ~ Intention + PBC
+
+    # Covariances
+    Attitude ~~ PBC
+    Attitude ~~ SubjectiveNorm
+    PBC ~~ SubjectiveNorm
+    ATT1 ~~ ATT2
+    ATT2 ~~ ATT3
+    PBC1 ~~ PBC2
+    PBC2 ~~ PBC3
+    SN1 ~~ SN2
+    SN2 ~~ SN3
+    ATT1 ~~ BEH1
+    INT1 ~~ BEH1
+</pre>
+		</div>
+		<br>
+		<div class="accordion" id="accordion1">
+		<div class="accordion-item">
+	    <h2 class="accordion-header" id="headingOne">
+	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+		Variables classification
+	      </button>
+	    </h2>
+	    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion1">
+	      <div class="accordion-body">
+		<div class="row"><div class="col-sm-2">all</div><div class="col-sm-6">SN1, PBC1, Attitude, SN3, ATT3, PBC, INT1, PBC3, PBC2, BEH1, SN2, ATT2, SubjectiveNorm, BEH2, INT2, Behavior, Intention, ATT1</div></div><div class="row"><div class="col-sm-2">endogenous</div><div class="col-sm-6">SN1, PBC1, SN3, ATT3, INT1, PBC3, PBC2, BEH1, SN2, ATT2, BEH2, INT2, Behavior, Intention, ATT1</div></div><div class="row"><div class="col-sm-2">exogenous</div><div class="col-sm-6">SubjectiveNorm, PBC, Attitude</div></div><div class="row"><div class="col-sm-2">observed</div><div class="col-sm-6">ATT1, ATT2, ATT3, BEH1, BEH2, INT1, INT2, PBC1, PBC2, PBC3, SN1, SN2, SN3</div></div><div class="row"><div class="col-sm-2">latent</div><div class="col-sm-6">Attitude, SubjectiveNorm, PBC, Behavior, Intention</div></div><div class="row"><div class="col-sm-2">indicator</div><div class="col-sm-6">SN1, BEH1, SN2, PBC1, ATT2, SN3, BEH2, INT1, INT2, PBC3, PBC2, ATT3, ATT1</div></div><div class="row"><div class="col-sm-2">output</div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-2">_output</div><div class="col-sm-6">SN1, BEH1, SN2, PBC1, ATT2, SN3, BEH2, INT1, INT2, PBC3, PBC2, ATT3, ATT1</div></div><div class="row"><div class="col-sm-2">inner</div><div class="col-sm-6">Attitude, Behavior, Intention, PBC, SubjectiveNorm</div></div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<br>
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link active" id="plainfig-tab" data-bs-toggle="tab" data-bs-target="#plainfig" type="button" role="tab" aria-controls="plainfig" aria-selected="true">Omit covariances and estimates</button>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link" id="covfig-tab" data-bs-toggle="tab" data-bs-target="#covfig" type="button" role="tab" aria-controls="covfig" aria-selected="false">Omit covariances</button>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link" id="plainparamfig-tab" data-bs-toggle="tab" data-bs-target="#plainparamfig" type="button" role="tab" aria-controls="plainparamfig" aria-selected="false">Omit estimates</button>
+		  </li>
+		<li class="nav-item" role="presentation">
+		    <button class="nav-link" id="covparamfig-tab" data-bs-toggle="tab" data-bs-target="#covparamfig" type="button" role="tab" aria-controls="covparamfig" aria-selected="false">Show estimates and covariances</button>
+		  </li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+		  <div class="tab-pane fade show active" id="plainfig" role="tabpanel" aria-labelledby="plainfig-tab"><img src="./plots/1.png" class="img-fluid" alt="Model figure with covariances and estimates omitted"></div>
+		  <div class="tab-pane fade" id="covfig" role="tabpanel" aria-labelledby="covfig-tab"><img src="./plots/2.png" class="img-fluid" alt="Model figure with covariances omitted"></div>
+		  <div class="tab-pane fade" id="plainparamfig" role="tabpanel" aria-labelledby="plainparamfig-tab"><img src="./plots/3.png" class="img-fluid" alt="Model figure with estimates omitted"></div>
+		 <div class="tab-pane fade" id="covparamfig" role="tabpanel" aria-labelledby="covparamfig-tab"><img src="./plots/4.png" class="img-fluid" alt="Model figure"></div>
+		</div>
+		
+	<a class="anchor" id="estimates"></a>
+	<h3>Estimates</h3>
+	<div style="font-family:monospace">
+	<div class="row"><div class='col-sm-2'></div><div class='col-sm-2'></div><div class='col-sm-1'>Estimate</div><div class='col-sm-1'>P-value</div></div><div class='col-sm-2'>Measurement:</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div><div class="row"><div class='col-sm-2 text-end'>Attitude =~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT1</div><div class='col-sm-1'>1.000</div><div class='col-sm-1'>-</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT2</div><div class='col-sm-1'>0.614</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT3</div><div class='col-sm-1'>0.567</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'>PBC =~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC1</div><div class='col-sm-1'>1.000</div><div class='col-sm-1'>-</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC2</div><div class='col-sm-1'>0.094</div><div class='col-sm-1'>0.482</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC3</div><div class='col-sm-1'>0.584</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'>SubjectiveNorm =~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN1</div><div class='col-sm-1'>1.000</div><div class='col-sm-1'>-</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN2</div><div class='col-sm-1'>0.192</div><div class='col-sm-1'>0.740</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN3</div><div class='col-sm-1'>0.713</div><div class='col-sm-1'>0.026</div></div><div class="row"><div class='col-sm-2 text-end'>Intention =~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>INT1</div><div class='col-sm-1'>1.000</div><div class='col-sm-1'>-</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>INT2</div><div class='col-sm-1'>0.699</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'>Behavior =~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>BEH1</div><div class='col-sm-1'>1.000</div><div class='col-sm-1'>-</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>BEH2</div><div class='col-sm-1'>0.924</div><div class='col-sm-1'>0.000</div></div><div class='col-sm-2'>Regressions:</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div><div class="row"><div class='col-sm-2 text-end'>Intention ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>Attitude</div><div class='col-sm-1'>0.602</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC</div><div class='col-sm-1'>0.442</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SubjectiveNorm</div><div class='col-sm-1'>-0.001</div><div class='col-sm-1'>0.670</div></div><div class="row"><div class='col-sm-2 text-end'>Behavior ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>Intention</div><div class='col-sm-1'>1.647</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC</div><div class='col-sm-1'>-0.686</div><div class='col-sm-1'>0.000</div></div><div class='col-sm-2'>Variances:</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>Attitude</div><div class='col-sm-1'>0.026</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC</div><div class='col-sm-1'>0.022</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>Behavior</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>0.162</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>Intention</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>1.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SubjectiveNorm</div><div class='col-sm-1'>0.078</div><div class='col-sm-1'>0.030</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT1</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>0.347</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT2</div><div class='col-sm-1'>0.010</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC1</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>0.782</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC2</div><div class='col-sm-1'>0.064</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN1</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>1.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN2</div><div class='col-sm-1'>0.050</div><div class='col-sm-1'>0.006</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>INT1</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>0.135</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT3</div><div class='col-sm-1'>0.013</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>BEH1</div><div class='col-sm-1'>0.001</div><div class='col-sm-1'>0.001</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>BEH2</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>1.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>INT2</div><div class='col-sm-1'>0.009</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC3</div><div class='col-sm-1'>0.021</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN3</div><div class='col-sm-1'>0.011</div><div class='col-sm-1'>0.535</div></div><div class="row"><div class='col-sm-2'>Covariances:</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'>Attitude ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC</div><div class='col-sm-1'>-0.002</div><div class='col-sm-1'>0.210</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SubjectiveNorm</div><div class='col-sm-1'>-0.001</div><div class='col-sm-1'>0.660</div></div><div class="row"><div class='col-sm-2 text-end'>PBC ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SubjectiveNorm</div><div class='col-sm-1'>0.004</div><div class='col-sm-1'>0.258</div></div><div class="row"><div class='col-sm-2 text-end'>ATT1 ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT2</div><div class='col-sm-1'>-0.000</div><div class='col-sm-1'>0.397</div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>BEH1</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>0.088</div></div><div class="row"><div class='col-sm-2 text-end'>ATT2 ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>ATT3</div><div class='col-sm-1'>0.002</div><div class='col-sm-1'>0.017</div></div><div class="row"><div class='col-sm-2 text-end'>PBC1 ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC2</div><div class='col-sm-1'>-0.000</div><div class='col-sm-1'>0.765</div></div><div class="row"><div class='col-sm-2 text-end'>PBC2 ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>PBC3</div><div class='col-sm-1'>0.015</div><div class='col-sm-1'>0.000</div></div><div class="row"><div class='col-sm-2 text-end'>SN1 ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN2</div><div class='col-sm-1'>0.035</div><div class='col-sm-1'>0.429</div></div><div class="row"><div class='col-sm-2 text-end'>SN2 ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>SN3</div><div class='col-sm-1'>0.029</div><div class='col-sm-1'>0.372</div></div><div class="row"><div class='col-sm-2 text-end'>INT1 ~</div><div class='col-sm-2'></div><div class='col-sm-1'></div><div class='col-sm-1'></div></div><div class="row"><div class='col-sm-2 text-end'></div><div class='col-sm-2'>BEH1</div><div class='col-sm-1'>0.000</div><div class='col-sm-1'>0.127</div></div>
+	</div>
+	<br>
+	<div class="accordion" id="accordion3">
+	<div class="accordion-item">
+	    <h2 class="accordion-header" id="headingThree">
+	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		semopy tabular output
+	      </button>
+	    </h2>	
+	    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion3">
+	      <div class="accordion-body" style="background-color: #f6f8fa;max-width: 100%;width: 100%">
+		<pre style="font-family: monospace">              lval  op            rval      Estimate  Std. Err    z-value  \
+0        Intention   ~        Attitude  6.018612e-01  0.010682  56.343901   
+1        Intention   ~             PBC  4.416838e-01  0.013147  33.594687   
+2        Intention   ~  SubjectiveNorm -1.061784e-03   0.00249  -0.426353   
+3         Behavior   ~       Intention  1.646686e+00  0.026451  62.253662   
+4         Behavior   ~             PBC -6.862633e-01   0.02215 -30.982495   
+5             ATT1   ~        Attitude  1.000000e+00         -          -   
+6             ATT2   ~        Attitude  6.135214e-01  0.049123  12.489531   
+7             ATT3   ~        Attitude  5.668376e-01  0.053887  10.519082   
+8             PBC1   ~             PBC  1.000000e+00         -          -   
+9             PBC2   ~             PBC  9.418786e-02  0.133846   0.703702   
+10            PBC3   ~             PBC  5.836895e-01   0.07569   7.711558   
+11             SN1   ~  SubjectiveNorm  1.000000e+00         -          -   
+12             SN2   ~  SubjectiveNorm  1.921791e-01  0.579816   0.331448   
+13             SN3   ~  SubjectiveNorm  7.132370e-01  0.319708   2.230903   
+14            INT1   ~       Intention  1.000000e+00         -          -   
+15            INT2   ~       Intention  6.985722e-01  0.065466  10.670835   
+16            BEH1   ~        Behavior  1.000000e+00         -          -   
+17            BEH2   ~        Behavior  9.238791e-01  0.014274  64.725276   
+18        Attitude  ~~             PBC -2.335044e-03  0.001862  -1.253729   
+19        Attitude  ~~  SubjectiveNorm -1.168512e-03  0.002658  -0.439561   
+20        Attitude  ~~        Attitude  2.612121e-02   0.00289   9.039188   
+21             PBC  ~~  SubjectiveNorm  3.525263e-03  0.003118    1.13077   
+22             PBC  ~~             PBC  2.201501e-02   0.00246   8.949224   
+23        Behavior  ~~        Behavior  2.947691e-04  0.000211   1.398764   
+24       Intention  ~~       Intention  1.008085e-16  0.000112        0.0   
+25  SubjectiveNorm  ~~  SubjectiveNorm  7.775173e-02  0.035725   2.176394   
+26            ATT1  ~~            ATT2 -1.803313e-04  0.000213   -0.84661   
+27            ATT1  ~~            BEH1  3.731472e-04  0.000219   1.707031   
+28            ATT1  ~~            ATT1  2.924690e-04  0.000311     0.9402   
+29            ATT2  ~~            ATT3  2.163094e-03  0.000905   2.389645   
+30            ATT2  ~~            ATT2  1.025343e-02   0.00113   9.074654   
+31            PBC1  ~~            PBC2 -1.831005e-04  0.000613  -0.298888   
+32            PBC1  ~~            PBC1  1.368413e-04  0.000495   0.276549   
+33            PBC2  ~~            PBC3  1.465377e-02  0.003036   4.826405   
+34            PBC2  ~~            PBC2  6.395740e-02  0.006959   9.191195   
+35             SN1  ~~             SN2  3.494315e-02  0.044203    0.79052   
+36             SN1  ~~             SN1  1.448407e-15  0.034709        0.0   
+37             SN2  ~~             SN3  2.870095e-02  0.032135   0.893144   
+38             SN2  ~~             SN2  4.956697e-02  0.017857   2.775707   
+39            INT1  ~~            BEH1  1.988577e-04   0.00013   1.526238   
+40            INT1  ~~            INT1  1.388803e-04  0.000093   1.492781   
+41            ATT3  ~~            ATT3  1.264517e-02  0.001377   9.181463   
+42            BEH1  ~~            BEH1  7.337123e-04  0.000229   3.204004   
+43            BEH2  ~~            BEH2  5.041923e-17  0.000186        0.0   
+44            INT2  ~~            INT2  8.977838e-03  0.000978   9.182366   
+45            PBC3  ~~            PBC3  2.066417e-02  0.002256   9.159737   
+46             SN3  ~~             SN3  1.098674e-02  0.017697   0.620816   
+
+     p-value  
+0        0.0  
+1        0.0  
+2   0.669851  
+3        0.0  
+4        0.0  
+5          -  
+6        0.0  
+7        0.0  
+8          -  
+9   0.481618  
+10       0.0  
+11         -  
+12  0.740306  
+13  0.025688  
+14         -  
+15       0.0  
+16         -  
+17       0.0  
+18  0.209941  
+19  0.660255  
+20       0.0  
+21  0.258152  
+22       0.0  
+23  0.161884  
+24       1.0  
+25  0.029526  
+26  0.397212  
+27  0.087816  
+28  0.347115  
+29  0.016865  
+30       0.0  
+31  0.765025  
+32  0.782126  
+33  0.000001  
+34       0.0  
+35  0.429224  
+36       1.0  
+37   0.37178  
+38  0.005508  
+39  0.126951  
+40  0.135495  
+41       0.0  
+42  0.001355  
+43       1.0  
+44       0.0  
+45       0.0  
+46  0.534721  </pre>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<br>
+	<div class="accordion" id="accordion2">
+	<div class="accordion-item">
+	    <h2 class="accordion-header" id="headingTwo">
+	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		Optimizer report
+	      </button>
+	    </h2>	
+	    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion2">
+	      <div class="accordion-body" style="background-color: #f6f8fa;max-width: 100%;width: 100%">
+		<pre style="font-family: monospace">Name of objective: MLW
+Optimization method: SLSQP
+Optimization successful.
+Optimization terminated successfully
+Objective value: 0.699
+Number of iterations: 193
+Params: 0.614 0.567 0.094 0.584 0.192 0.713 0.699 0.924 0.602 0.442 -0.001 1.647 -0.686 -0.002 -0.001 0.026 0.004 0.022 -0.000 0.000 0.000 0.002 0.010 -0.000 0.000 0.015 0.064 0.035 0.000 0.029 0.050 0.000 0.000 0.013 0.001 0.000 0.000 0.009 0.000 0.021 0.011 0.078</pre>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<a class="anchor" id="indices"></a>
+	<h3>Fit indices</h3>
+	<table class="table"><thead><tr><th scope='col'>DoF</th><th scope='col'>DoF Baseline</th><th scope='col'>chi2</th><th scope='col'>chi2 p-value</th><th scope='col'>chi2 Baseline</th></tr></thead><tbody><tr><td>49.000</td><td>78.000</td><td>118.048</td><td>0.000</td><td>2933.991</td></tr></tbody></table><table class="table"><thead><tr><th scope='col'>CFI</th><th scope='col'>GFI</th><th scope='col'>AGFI</th><th scope='col'>NFI</th><th scope='col'>TLI</th></tr></thead><tbody><tr><td>0.976</td><td>0.960</td><td>0.936</td><td>0.960</td><td>0.962</td></tr></tbody></table><table class="table"><thead><tr><th scope='col'>RMSEA</th><th scope='col'>AIC</th><th scope='col'>BIC</th><th scope='col'>LogLik</th></tr></thead><tbody><tr><td>0.092</td><td>82.603</td><td>214.059</td><td>0.699</td></tr></tbody></table>
+	<a class="anchor" id="matrices"></a>
+	<h3>Matrices</h3>
+ 	<center><h4>Covariance matrix</h4></center>
+<ul class="nav nav-tabs" id="cov" role="tablist"><li class="nav-item" role="presentation">
+<button class="nav-link active" id="sample-tab" data-bs-toggle="tab" data-bs-target="#sample"
+type="button" role="tab" aria-controls="sample" aria-selected="true">Sample</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="modelimplied-tab" data-bs-toggle="tab" data-bs-target="#modelimplied"
+type="button" role="tab" aria-controls="modelimplied" aria-selected="false">Model-implied</button>
+</li></ul><div class="tab-content" id="covContent"><div class="tab-pane fade show active" id="sample" role="tabpanel" aria-labelledby="sample-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>ATT1</th>
+      <th>ATT2</th>
+      <th>ATT3</th>
+      <th>BEH1</th>
+      <th>BEH2</th>
+      <th>INT1</th>
+      <th>INT2</th>
+      <th>PBC1</th>
+      <th>PBC2</th>
+      <th>PBC3</th>
+      <th>SN1</th>
+      <th>SN2</th>
+      <th>SN3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>-0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.04</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="modelimplied" role="tabpanel" aria-labelledby="modelimplied-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>ATT1</th>
+      <th>ATT2</th>
+      <th>ATT3</th>
+      <th>BEH1</th>
+      <th>BEH2</th>
+      <th>INT1</th>
+      <th>INT2</th>
+      <th>PBC1</th>
+      <th>PBC2</th>
+      <th>PBC3</th>
+      <th>SN1</th>
+      <th>SN2</th>
+      <th>SN3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.04</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table></div></div><br><center><h4>Model matrices</h4></center><ul class="nav nav-tabs" id="modelmatrices" role="tablist"><li class="nav-item" role="presentation">
+<button class="nav-link active" id="mxBeta-tab" data-bs-toggle="tab" data-bs-target="#mxBeta"
+type="button" role="tab" aria-controls="mxBeta" aria-selected="true">Beta</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="mxLambda-tab" data-bs-toggle="tab" data-bs-target="#mxLambda"
+type="button" role="tab" aria-controls="mxLambda" aria-selected="false">Lambda</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="mxPsi-tab" data-bs-toggle="tab" data-bs-target="#mxPsi"
+type="button" role="tab" aria-controls="mxPsi" aria-selected="false">Psi</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="mxTheta-tab" data-bs-toggle="tab" data-bs-target="#mxTheta"
+type="button" role="tab" aria-controls="mxTheta" aria-selected="false">Theta</button>
+</li></ul><div class="tab-content" id="covContent"><div class="tab-pane fade show active" id="mxBeta" role="tabpanel" aria-labelledby="mxBeta-tab"><ul class="nav nav-tabs" id="Betasub" role="tablist"><li class="nav-item" role="presentation">
+<button class="nav-link active" id="BetaEstimates-tab" data-bs-toggle="tab" data-bs-target="#BetaEstimates"
+type="button" role="tab" aria-controls="BetaEstimates" aria-selected="true">Estimates</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="BetaStart-tab" data-bs-toggle="tab" data-bs-target="#BetaStart"
+type="button" role="tab" aria-controls="BetaStart" aria-selected="false">Start</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="BetaNames-tab" data-bs-toggle="tab" data-bs-target="#BetaNames"
+type="button" role="tab" aria-controls="BetaNames" aria-selected="false">Names</button>
+</li></ul><div class="tab-content" id="sem_report.htmlsubContent"><div class="tab-pane fade show active" id="BetaEstimates" role="tabpanel" aria-labelledby="BetaEstimates-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Attitude</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Behavior</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.65</td>
+      <td>-0.69</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Intention</th>
+      <td>0.60</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.44</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>PBC</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SubjectiveNorm</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="BetaStart" role="tabpanel" aria-labelledby="BetaStart-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Attitude</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Behavior</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Intention</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SubjectiveNorm</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="BetaNames" role="tabpanel" aria-labelledby="BetaNames-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Attitude</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Behavior</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b17</td>
+      <td>_b18</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Intention</th>
+      <td>_b14</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b15</td>
+      <td>_b16</td>
+    </tr>
+    <tr>
+      <th>PBC</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SubjectiveNorm</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table></div></div></div><div class="tab-pane fade " id="mxLambda" role="tabpanel" aria-labelledby="mxLambda-tab"><ul class="nav nav-tabs" id="Lambdasub" role="tablist"><li class="nav-item" role="presentation">
+<button class="nav-link active" id="LambdaEstimates-tab" data-bs-toggle="tab" data-bs-target="#LambdaEstimates"
+type="button" role="tab" aria-controls="LambdaEstimates" aria-selected="true">Estimates</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="LambdaStart-tab" data-bs-toggle="tab" data-bs-target="#LambdaStart"
+type="button" role="tab" aria-controls="LambdaStart" aria-selected="false">Start</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="LambdaNames-tab" data-bs-toggle="tab" data-bs-target="#LambdaNames"
+type="button" role="tab" aria-controls="LambdaNames" aria-selected="false">Names</button>
+</li></ul><div class="tab-content" id="sem_report.htmlsubContent"><div class="tab-pane fade show active" id="LambdaEstimates" role="tabpanel" aria-labelledby="LambdaEstimates-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>0.61</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>0.57</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.00</td>
+      <td>0.92</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.09</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.58</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.19</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.71</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="LambdaStart" role="tabpanel" aria-labelledby="LambdaStart-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>0.59</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>0.56</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.00</td>
+      <td>0.91</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.08</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.58</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.64</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.71</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="LambdaNames" role="tabpanel" aria-labelledby="LambdaNames-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>_b1</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>_b2</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>_b3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>0.00</td>
+      <td>_b12</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.00</td>
+      <td>_b13</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b10</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b11</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b4</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b5</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b6</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b7</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b8</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_b9</td>
+    </tr>
+  </tbody>
+</table></div></div></div><div class="tab-pane fade " id="mxPsi" role="tabpanel" aria-labelledby="mxPsi-tab"><ul class="nav nav-tabs" id="Psisub" role="tablist"><li class="nav-item" role="presentation">
+<button class="nav-link active" id="PsiEstimates-tab" data-bs-toggle="tab" data-bs-target="#PsiEstimates"
+type="button" role="tab" aria-controls="PsiEstimates" aria-selected="true">Estimates</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="PsiStart-tab" data-bs-toggle="tab" data-bs-target="#PsiStart"
+type="button" role="tab" aria-controls="PsiStart" aria-selected="false">Start</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="PsiNames-tab" data-bs-toggle="tab" data-bs-target="#PsiNames"
+type="button" role="tab" aria-controls="PsiNames" aria-selected="false">Names</button>
+</li></ul><div class="tab-content" id="sem_report.htmlsubContent"><div class="tab-pane fade show active" id="PsiEstimates" role="tabpanel" aria-labelledby="PsiEstimates-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Attitude</th>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>Behavior</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Intention</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC</th>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SubjectiveNorm</th>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.08</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="PsiStart" role="tabpanel" aria-labelledby="PsiStart-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Attitude</th>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Behavior</th>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Intention</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SubjectiveNorm</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="PsiNames" role="tabpanel" aria-labelledby="PsiNames-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Attitude</th>
+      <th>Behavior</th>
+      <th>Intention</th>
+      <th>PBC</th>
+      <th>SubjectiveNorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Attitude</th>
+      <td>_c3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c1</td>
+      <td>_c2</td>
+    </tr>
+    <tr>
+      <th>Behavior</th>
+      <td>0.00</td>
+      <td>_c24</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Intention</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c26</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC</th>
+      <td>_c1</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c5</td>
+      <td>_c4</td>
+    </tr>
+    <tr>
+      <th>SubjectiveNorm</th>
+      <td>_c2</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c4</td>
+      <td>_c29</td>
+    </tr>
+  </tbody>
+</table></div></div></div><div class="tab-pane fade " id="mxTheta" role="tabpanel" aria-labelledby="mxTheta-tab"><ul class="nav nav-tabs" id="Thetasub" role="tablist"><li class="nav-item" role="presentation">
+<button class="nav-link active" id="ThetaEstimates-tab" data-bs-toggle="tab" data-bs-target="#ThetaEstimates"
+type="button" role="tab" aria-controls="ThetaEstimates" aria-selected="true">Estimates</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="ThetaStart-tab" data-bs-toggle="tab" data-bs-target="#ThetaStart"
+type="button" role="tab" aria-controls="ThetaStart" aria-selected="false">Start</button>
+</li><li class="nav-item" role="presentation">
+<button class="nav-link " id="ThetaNames-tab" data-bs-toggle="tab" data-bs-target="#ThetaNames"
+type="button" role="tab" aria-controls="ThetaNames" aria-selected="false">Names</button>
+</li></ul><div class="tab-content" id="sem_report.htmlsubContent"><div class="tab-pane fade show active" id="ThetaEstimates" role="tabpanel" aria-labelledby="ThetaEstimates-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>ATT1</th>
+      <th>ATT2</th>
+      <th>ATT3</th>
+      <th>BEH1</th>
+      <th>BEH2</th>
+      <th>INT1</th>
+      <th>INT2</th>
+      <th>PBC1</th>
+      <th>PBC2</th>
+      <th>PBC3</th>
+      <th>SN1</th>
+      <th>SN2</th>
+      <th>SN3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>-0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.06</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.01</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="ThetaStart" role="tabpanel" aria-labelledby="ThetaStart-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>ATT1</th>
+      <th>ATT2</th>
+      <th>ATT3</th>
+      <th>BEH1</th>
+      <th>BEH2</th>
+      <th>INT1</th>
+      <th>INT2</th>
+      <th>PBC1</th>
+      <th>PBC2</th>
+      <th>PBC3</th>
+      <th>SN1</th>
+      <th>SN2</th>
+      <th>SN3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+    </tr>
+  </tbody>
+</table></div><div class="tab-pane fade " id="ThetaNames" role="tabpanel" aria-labelledby="ThetaNames-tab"><table border="1" class="dataframe table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>ATT1</th>
+      <th>ATT2</th>
+      <th>ATT3</th>
+      <th>BEH1</th>
+      <th>BEH2</th>
+      <th>INT1</th>
+      <th>INT2</th>
+      <th>PBC1</th>
+      <th>PBC2</th>
+      <th>PBC3</th>
+      <th>SN1</th>
+      <th>SN2</th>
+      <th>SN3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ATT1</th>
+      <td>_c8</td>
+      <td>_c6</td>
+      <td>0.00</td>
+      <td>_c7</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT2</th>
+      <td>_c6</td>
+      <td>_c10</td>
+      <td>_c9</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>ATT3</th>
+      <td>0.00</td>
+      <td>_c9</td>
+      <td>_c21</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH1</th>
+      <td>_c7</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c22</td>
+      <td>0.00</td>
+      <td>_c19</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>BEH2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c23</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c19</td>
+      <td>0.00</td>
+      <td>_c20</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>INT2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c25</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c12</td>
+      <td>_c11</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c11</td>
+      <td>_c14</td>
+      <td>_c13</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>PBC3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c13</td>
+      <td>_c27</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN1</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c16</td>
+      <td>_c15</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>SN2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c15</td>
+      <td>_c18</td>
+      <td>_c17</td>
+    </tr>
+    <tr>
+      <th>SN3</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>_c17</td>
+      <td>_c28</td>
+    </tr>
+  </tbody>
+</table></div></div></div></div>
+    </div>
+   </div>
+  </div>
+</div>
+<footer class="footer">
+      <div class="container">
+	<br>
+	<center>
+        <span class="text-muted">Generated by <a href="https://semopy.com"><b>semopy</b></a> v. 2.3.11.</span>
+	</center>
+      </div>
+    </footer>
+</body>
+<script>
+const menus = [document.getElementById("model_m"), document.getElementById("estimates_m"), document.getElementById("indices_m"), document.getElementById("matrices_m")];
+const headers = [document.getElementById("model"), document.getElementById("estimates"), document.getElementById("indices"), document.getElementById("matrices")];
+var cur = menus[0];
+cur.classList.add('active');
+window.addEventListener("scroll", function() {
+  headers.forEach(function(item, index, array) {
+    if (window.scrollY >= (item.offsetTop - 1.05 * item.offsetHeight)) {
+        item = menus[index];
+        cur.classList.remove("active");
+        cur = item;
+        cur.classList.add("active");
+  }
+});
+});
+</script>
+
+</html>
