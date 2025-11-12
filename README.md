@@ -40,7 +40,7 @@ The analysis investigates **attitudes**, **subjective norms**, **perceived behav
 
 - **Perceived Behavioral Control (PBC)** emerged as the strongest predictor of recycling intention (β ≈ 0.47, p < 0.001).  
 - **Intention → Behavior** relation was moderate but significant (β ≈ 0.35), showing an intention-behavior gap.  
-- Model fit was satisfactory: **CFI = 0.947**, **RMSEA = 0.048**, **SRMR = 0.041**.  
+- Model fit was satisfactory: **CFI = 0.976**, **RMSEA = 0.092**, **TLI = 0.962**.  
 - Education level moderated the link between intention and actual behavior.  
 - Younger participants showed higher environmental attitudes but lower control over recycling opportunities.  
 
@@ -50,23 +50,27 @@ The analysis investigates **attitudes**, **subjective norms**, **perceived behav
 
 ## 📂 Repository Structure
 ```bash
-├── Report/
-│   └── ANALYZING_THE_E-WASTE_AWARENESS.pdf          # Final project report
-├── data/
-│   ├── raw_survey_responses.csv                     # Original collected data
-│   └── sem_data_cleaned.csv                         # Preprocessed dataset for SEM
-├── notebooks/
-│   └── Sem_Model_EWaste.ipynb                       # Jupyter notebook for SEM modeling
-├── code/
-│   ├── preprocessing.py                             # Data cleaning and feature engineering
-│   └── sem_analysis.py                              # Model specification and fitting
-├── outputs/
-│   ├── sem_fit_statistics.csv                       # Model fit indices
-│   └── sem_parameter_estimates.csv                  # Path coefficients and loadings
-├── figures/
-│   └── measurement_model.png                        # Path diagram and visualizations
-├── requirements.txt
-└── README.md
+├── Dataset/                                 # Folder containing source and processed data files
+│   └── Waste_Management_and_Recycling_India.csv
+│
+├── sem_report.html                          # HTML report summarizing SEM results
+│
+├── E-Waste_1.ipynb                          # Jupyter Notebook with full SEM model workflow
+│
+├── README.md                                # Project documentation file
+│
+├── requirement.txt                          # Python dependencies for reproducibility
+│
+├── sem_data.csv                             # Main dataset used for Structural Equation Modeling
+│
+├── sem_estimates.csv                        # Parameter estimates (factor loadings, path coefficients, SE, p-values)
+│
+├── sem_fit_indices.png                      # Visual representation of key model fit indices
+│
+├── sem_fit_statistics.csv                   # Numerical summary of model fit statistics (CFI, RMSEA, SRMR, etc.)
+│
+└── sem_structural_paths.png                 # Diagram of the final SEM model showing latent and observed variable paths
+
 ```
 ## ✅ Evaluation Metrics
 
